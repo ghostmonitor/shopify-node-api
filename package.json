@@ -1,6 +1,6 @@
 {
-  "name": "shopify-node-api",
-  "version": "1.6.4",
+  "name": "@ghostmonitor/shopify",
+  "version": "1.6.5",
   "description": "OAuth2 Module for Shopify API",
   "main": "./lib/shopify",
   "scripts": {
@@ -16,7 +16,7 @@
     "node.js",
     "oauth2"
   ],
-  "author": "Chris Gregory <chris@sinelabs.com> (http://sinelabs.com/)",
+  "author": "ghostmonitor",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/sinechris/shopify-node-api/issues"

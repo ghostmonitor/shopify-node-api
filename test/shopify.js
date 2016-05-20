@@ -44,6 +44,46 @@ describe('#buildAuthURL', function(){
 
 });
 
+describe('#buildAuthURL from url without protocol', function(){
+
+    var Shopify = new shopifyAPI({
+                shop: 'MYSHOP.myowndomain.com',
+                shopify_api_key: 'abc123',
+                shopify_shared_secret: 'asdf1234',
+                shopify_scope: 'write_products',
+                redirect_uri: 'http://localhost:3000/finish_auth',
+                nonce: 'abc123'
+            });
+
+
+    it('builds correct string', function(){
+        var auth_url = Shopify.buildAuthURL(),
+            correct_auth_url = 'https://MYSHOP.myowndomain.com/admin/oauth/authorize?client_id=abc123&scope=write_products&redirect_uri=http://localhost:3000/finish_auth&state=abc123';
+        auth_url.should.equal(correct_auth_url);
+    });
+
+});
+
+describe('#buildAuthURL from url', function(){
+
+    var Shopify = new shopifyAPI({
+                shop: 'http://MYSHOP.myowndomain.com',
+                shopify_api_key: 'abc123',
+                shopify_shared_secret: 'asdf1234',
+                shopify_scope: 'write_products',
+                redirect_uri: 'http://localhost:3000/finish_auth',
+                nonce: 'abc123'
+            });
+
+
+    it('builds correct string', function(){
+        var auth_url = Shopify.buildAuthURL(),
+            correct_auth_url = 'https://myshop.myowndomain.com/admin/oauth/authorize?client_id=abc123&scope=write_products&redirect_uri=http://localhost:3000/finish_auth&state=abc123';
+        auth_url.should.equal(correct_auth_url);
+    });
+
+});
+
 describe('#set_access_token', function(){
     var Shopify = new shopifyAPI({});
 
