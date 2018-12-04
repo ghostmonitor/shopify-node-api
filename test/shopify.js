@@ -24,7 +24,7 @@ describe('Constructor Function: #shopifyAPI', function(){
 
 });
 
-describe.only('#buildAuthURL', function(){
+describe('#buildAuthURL', function(){
 
     var Shopify = new shopifyAPI({
                 shop: 'MYSHOP',
