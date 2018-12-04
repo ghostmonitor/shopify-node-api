@@ -24,7 +24,7 @@ describe('Constructor Function: #shopifyAPI', function(){
 
 });
 
-describe('#buildAuthURL', function(){
+describe.only('#buildAuthURL', function(){
 
     var Shopify = new shopifyAPI({
                 shop: 'MYSHOP',
@@ -40,6 +40,12 @@ describe('#buildAuthURL', function(){
         var auth_url = Shopify.buildAuthURL(),
             correct_auth_url = 'https://MYSHOP.myshopify.com/admin/oauth/authorize?client_id=abc123&scope=write_products&redirect_uri=http://localhost:3000/finish_auth&state=abc123';
         auth_url.should.equal(correct_auth_url);
+    });
+
+    it('builds correct string for user based token', function(){
+      var auth_url = Shopify.buildAuthURL(true),
+        correct_auth_url = 'https://MYSHOP.myshopify.com/admin/oauth/authorize?client_id=abc123&grant_options[]=per-user&scope=write_products&redirect_uri=http://localhost:3000/finish_auth&state=abc123';
+      auth_url.should.equal(correct_auth_url);
     });
 
 });
